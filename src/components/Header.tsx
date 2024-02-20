@@ -1,5 +1,7 @@
+import { Nav } from "react-bootstrap";
+
 function Header() {
-  return <h1>Header</h1>;
+  return <Nav></Nav>;
 }
 
 export default Header;

@@ -31,7 +31,9 @@ function Footer() {
             </a>
           </NavItem>
         </Nav>
-        <p className="text-center text-body-secondary">© 2023 Company, Inc</p>
+        <p className="text-center text-body-secondary">
+          © 2024 TownLib's, Inc
+        </p>
       </footer>
     </Container>
   );
