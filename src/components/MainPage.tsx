@@ -6,14 +6,14 @@ import { Container } from "react-bootstrap";
 function MainPage() {
   return (
     <>
-      <Container className={"d-flex flex-column min-vh-100"}>
-        <Container>
+      <Container fluid className={"d-flex flex-column min-vh-100 p-0"}>
+        <Container fluid className={"p-0"}>
           <Header />
         </Container>
-        <Container className={"flex-grow-1"}>
+        <Container fluid className={"flex-grow-1"}>
           <Outlet />
         </Container>
-        <Container>
+        <Container fluid className={"p-0"}>
           <Footer />
         </Container>
       </Container>
