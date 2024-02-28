@@ -4,7 +4,7 @@ function Header() {
   return (
     <Navbar bg="dark" data-bs-theme="dark" className={"p-4 mb-4"}>
       <Container fluid>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand href="#home">Town's Lib</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#features">Features</Nav.Link>
