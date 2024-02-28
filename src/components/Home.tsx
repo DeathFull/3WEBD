@@ -1,42 +1,39 @@
 import { useRecentChanges } from "../query/ApiQuery.tsx";
 import { RecentChanges } from "../types/types.ts";
 import RecentChangeCard from "./RecentChangeCard.tsx";
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 function Home() {
   const recentChanges = useRecentChanges();
+  const isLoading = recentChanges.some((change) => change.isLoading);
+  const isError = recentChanges.some((change) => change.isError);
 
-  if (recentChanges.isLoading) {
+  if (isLoading) {
     return (
       <>
         <p>Chargement...</p>
       </>
     );
-  } else if (recentChanges.isError) {
+  } else if (isError) {
     return (
       <>
         <p>Erreur</p>
       </>
     );
-  } else if (recentChanges.isSuccess) {
-    return (
-      <>
-        <Row md={3} className="g-4 justify-content-center">
-          {recentChanges.data.map((change: RecentChanges) => {
-            return (
-              <Col key={change.timestamp}>
-                <RecentChangeCard change={change} />
-              </Col>
-            );
-          })}
-        </Row>
-      </>
-    );
   }
+
+  const data = recentChanges.flatMap((change) => change.data);
+  data.sort(
+    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+  );
 
   return (
     <>
-      <p>Erreur</p>
+      <Row md={3} className="g-4 justify-content-center">
+        {data.map((change: RecentChanges) => {
+          return <RecentChangeCard change={change} />;
+        })}
+      </Row>
     </>
   );
 }

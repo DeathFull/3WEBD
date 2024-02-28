@@ -1,14 +1,14 @@
-export interface Data {
+interface Data {
   master: string;
   duplicates: string[];
 }
 
-export interface Change {
+interface Change {
   key: string;
   revision: number;
 }
 
-export interface Author {
+interface Author {
   key: string;
 }
 
@@ -21,4 +21,35 @@ export interface RecentChanges {
   comment: string;
   data: Data;
   changes: Change[];
+}
+
+interface AuthorRole {
+  key: string;
+}
+
+interface AuthorInfo {
+  type: AuthorRole;
+  author: Author;
+}
+
+interface DateTime {
+  type: string;
+  value: string;
+}
+
+export interface Work {
+  first_publish_date: string;
+  title: string;
+  subject_places: string[];
+  lc_classifications: string[];
+  key: string;
+  authors: AuthorInfo[];
+  dewey_number: string[];
+  type: { key: string };
+  subjects: string[];
+  covers: number[];
+  latest_revision: number;
+  revision: number;
+  created: DateTime;
+  last_modified: DateTime;
 }
