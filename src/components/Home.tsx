@@ -1,7 +1,7 @@
 import { useRecentChanges } from "../query/ApiQuery.tsx";
 import { RecentChanges } from "../types/types.ts";
 import RecentChangeCard from "./RecentChangeCard.tsx";
-import { Row } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 function Home() {
   const recentChanges = useRecentChanges();
@@ -29,11 +29,22 @@ function Home() {
 
   return (
     <>
-      <Row md={3} className="g-4 justify-content-center">
-        {data.map((change: RecentChanges) => {
-          return <RecentChangeCard change={change} />;
-        })}
-      </Row>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type of change</th>
+            <th>Book / Work ID</th>
+            <th>Comment</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((change: RecentChanges) => {
+            return <RecentChangeCard change={change} key={change.timestamp} />;
+          })}
+        </tbody>
+      </Table>
     </>
   );
 }

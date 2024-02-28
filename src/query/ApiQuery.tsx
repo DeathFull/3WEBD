@@ -48,19 +48,11 @@ export function useRecentChanges() {
   });
 }
 
-export function useBook(id: string) {
+export function useBookOrWork(id: string) {
   return useQuery({
     queryKey: ["book", id],
     queryFn: async () => {
-      let response = await fetch(`https://openlibrary.org/books/${id}.json`, {
-        redirect: "follow",
-      });
-
-      if (response.status === 301) {
-        console.log(response);
-        response = await fetch(window.location.href);
-      }
-
+      let response = await fetch(`https://openlibrary.org${id}.json`);
       return response.json();
     },
   });
