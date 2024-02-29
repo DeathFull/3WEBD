@@ -23,33 +23,8 @@ export interface RecentChanges {
   changes: Change[];
 }
 
-interface AuthorRole {
+export interface DocSearch {
   key: string;
-}
-
-interface AuthorInfo {
-  type: AuthorRole;
-  author: Author;
-}
-
-interface DateTime {
   type: string;
-  value: string;
-}
-
-export interface Work {
-  first_publish_date: string;
   title: string;
-  subject_places: string[];
-  lc_classifications: string[];
-  key: string;
-  authors: AuthorInfo[];
-  dewey_number: string[];
-  type: { key: string };
-  subjects: string[];
-  covers: number[];
-  latest_revision: number;
-  revision: number;
-  created: DateTime;
-  last_modified: DateTime;
 }

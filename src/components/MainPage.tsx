@@ -10,7 +10,12 @@ function MainPage() {
         <Container fluid className={"p-0"}>
           <Header />
         </Container>
-        <Container fluid className={"flex-grow-1"}>
+        <Container
+          fluid
+          className={
+            "d-flex justify-content-center align-items-center flex-grow-1"
+          }
+        >
           <Outlet />
         </Container>
         <Container fluid className={"p-0"}>

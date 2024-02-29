@@ -50,9 +50,21 @@ export function useRecentChanges() {
 
 export function useBookOrWork(id: string) {
   return useQuery({
-    queryKey: ["book", id],
+    queryKey: ["recent-changes", id],
     queryFn: async () => {
       let response = await fetch(`https://openlibrary.org${id}.json`);
+      return response.json();
+    },
+  });
+}
+
+export function useQuickSearchBooks(query: string) {
+  return useQuery({
+    queryKey: ["quick-search-books", query],
+    queryFn: async () => {
+      let response = await fetch(
+        `https://openlibrary.org/search.json?q=${query}`,
+      );
       return response.json();
     },
   });
