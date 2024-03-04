@@ -31,6 +31,12 @@ function Header() {
             placeholder="Search"
             className="me-2"
             aria-label="Search"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                goToQuickResults();
+              }
+            }}
             onChange={(e) => setParams({ q: e.target.value })}
           />
           <Button

@@ -48,11 +48,11 @@ export function useRecentChanges() {
   });
 }
 
-export function useBookOrWork(id: string) {
+export function useBookOrWork(type: string, id: string) {
   return useQuery({
-    queryKey: ["recent-changes", id],
+    queryKey: ["book-or-work", id],
     queryFn: async () => {
-      let response = await fetch(`https://openlibrary.org${id}.json`);
+      let response = await fetch(`https://openlibrary.org/${type}/${id}.json`);
       return response.json();
     },
   });

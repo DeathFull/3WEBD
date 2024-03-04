@@ -1,10 +1,10 @@
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "./components/MainPage.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./query/ApiQuery.tsx";
 import Home from "./components/Home.tsx";
 import QuickResults from "./components/QuickResults.tsx";
+import DetailPage from "./components/DetailPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "quickresults",
         element: <QuickResults />,
+      },
+      {
+        path: "detail/:type/:id",
+        element: <DetailPage />,
       },
     ],
   },
