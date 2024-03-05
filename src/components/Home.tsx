@@ -1,7 +1,7 @@
 import { useRecentChanges } from "../query/ApiQuery.tsx";
 import { RecentChanges } from "../types/types.ts";
 import RecentChangeCard from "./RecentChangeCard.tsx";
-import { Table } from "react-bootstrap";
+import { Spinner, Table } from "react-bootstrap";
 
 function Home() {
   const recentChanges = useRecentChanges();
@@ -11,7 +11,10 @@ function Home() {
   if (isLoading) {
     return (
       <>
-        <p>Chargement...</p>
+        <div className={"text-center"}>
+          <p>Chargement...</p>
+          <Spinner />
+        </div>
       </>
     );
   } else if (isError) {

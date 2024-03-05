@@ -5,11 +5,17 @@ import { queryClient } from "./query/ApiQuery.tsx";
 import Home from "./components/Home.tsx";
 import QuickResults from "./components/QuickResults.tsx";
 import DetailPage from "./components/DetailPage.tsx";
+import { ListProvider } from "./context/ListContext.tsx";
+import ListsPage from "./components/ListsPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
+    element: (
+      <ListProvider>
+        <MainPage />
+      </ListProvider>
+    ),
     children: [
       {
         path: "",
@@ -22,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "detail/:type/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "lists",
+        element: <ListsPage />,
       },
     ],
   },

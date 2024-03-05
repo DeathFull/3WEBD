@@ -1,13 +1,19 @@
 import { useBookOrWork } from "../query/ApiQuery.tsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { Alert, Button, Container, Image } from "react-bootstrap";
+import { Alert, Button, Container, Image, Spinner } from "react-bootstrap";
 
 function DetailPage() {
   const navigate = useNavigate();
   const { type, id } = useParams();
   const book = useBookOrWork(type ?? "", id ?? "");
-  if (book.isLoading) return <p>Loading...</p>;
-  if (book.isError) return <p>Error</p>;
+  if (book.isLoading)
+    return (
+      <div className={"text-center"}>
+        <p>Chargement...</p>
+        <Spinner />
+      </div>
+    );
+  if (book.isError) return <p>Erreur</p>;
   if (book.isSuccess) {
     if (book.data.error) {
       return (

@@ -20,10 +20,14 @@ function Header() {
         </LinkContainer>
         <Nav className="me-auto">
           <LinkContainer to="/">
-            <Nav.Link>Home</Nav.Link>
+            <Nav.Link>Accueil</Nav.Link>
           </LinkContainer>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link>Recherche Avancée</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/lists">
+            <Nav.Link>Listes</Nav.Link>
+          </LinkContainer>
         </Nav>
         <Form className="d-flex">
           <Form.Control
