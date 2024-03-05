@@ -24,6 +24,8 @@ export interface RecentChanges {
 }
 
 export interface DocSearch {
+  cover_i: string;
+  author_name: string[];
   key: string;
   type: string;
   title: string;

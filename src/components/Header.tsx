@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 function Header() {
   const navigate = useNavigate();
-  const [params, setParams] = useState({});
+  const [params, setParams] = useState({ q: "" });
   const goToQuickResults = () =>
     navigate({
       pathname: "/quickresults",
@@ -34,7 +34,7 @@ function Header() {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
-                goToQuickResults();
+                if (params.q !== null && params.q !== "") goToQuickResults();
               }
             }}
             onChange={(e) => setParams({ q: e.target.value })}
@@ -43,7 +43,7 @@ function Header() {
             variant="outline-success"
             onClick={(e) => {
               e.preventDefault();
-              goToQuickResults();
+              if (params.q !== null && params.q !== "") goToQuickResults();
             }}
           >
             Search

@@ -58,12 +58,12 @@ export function useBookOrWork(type: string, id: string) {
   });
 }
 
-export function useQuickSearchBooks(query: string) {
+export function useQuickSearchBooks(query: string, currentPage: number) {
   return useQuery({
-    queryKey: ["quick-search-books", query],
+    queryKey: ["quick-search-books", query, currentPage],
     queryFn: async () => {
       let response = await fetch(
-        `https://openlibrary.org/search.json?q=${query}`,
+        `https://openlibrary.org/search.json?q=${query}&page=${currentPage}`,
       );
       return response.json();
     },
