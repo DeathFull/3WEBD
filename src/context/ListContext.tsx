@@ -36,6 +36,8 @@ export const ListProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addToList = (list: string, item: string) => {
+    if (lists[list].includes(item)) return;
+
     setLists((prevLists: { [key: string]: string[] }) => {
       return { ...prevLists, [list]: [...prevLists[list], item] };
     });

@@ -1,9 +1,12 @@
 import { DocSearch } from "../types/types.ts";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import AddListModal from "./AddListModal.tsx";
+import { useState } from "react";
 
 function ResultCard({ result }: { result: DocSearch }) {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   return (
     <>
       <Card>
@@ -28,7 +31,9 @@ function ResultCard({ result }: { result: DocSearch }) {
             }}
           >
             Voir détail
-          </Button>
+          </Button>{" "}
+          <Button onClick={() => setShow(!show)}>test</Button>
+          {show && <AddListModal value={result.key} />}
         </Card.Footer>
       </Card>
     </>
