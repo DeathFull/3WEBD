@@ -29,10 +29,11 @@ function ResultCard({ result }: { result: DocSearch }) {
               e.preventDefault();
               navigate(`/detail${result.key}`);
             }}
+            className={"mb-1"}
           >
             Voir détail
           </Button>{" "}
-          <Button onClick={() => setShow(!show)}>test</Button>
+          <Button onClick={() => setShow(!show)}>Ajouter/Supprimer</Button>
           {show && <AddListModal value={result.key} />}
         </Card.Footer>
       </Card>
